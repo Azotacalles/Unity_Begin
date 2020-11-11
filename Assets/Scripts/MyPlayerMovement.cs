@@ -5,7 +5,7 @@ using UnityEngine;
 public class MyPlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private Vector3 direction;
+    private Vector3 direction;
 
     // Update is called once per frame
     private void Update()
