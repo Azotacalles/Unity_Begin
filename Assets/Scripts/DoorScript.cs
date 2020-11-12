@@ -5,9 +5,15 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     private bool open;
-
+    private AudioSource audio;
     private int interpolationFramesCount = 45; // Number of frames to completely interpolate between the 2 positions
     private int elapsedFrames = 0;
+
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+        audio.Stop();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -17,6 +23,7 @@ public class DoorScript : MonoBehaviour
             {
                 print("Open");
                 open = true;
+                audio.Play();
             }
         }
     }
@@ -35,7 +42,7 @@ public class DoorScript : MonoBehaviour
 
                 elapsedFrames++;
             }
-            else { open = false; }
+            else { open = false; audio.Stop(); }
         }
     }
 }
