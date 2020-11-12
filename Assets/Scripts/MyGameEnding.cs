@@ -4,26 +4,23 @@ using UnityEngine;
 
 public class MyGameEnding : MonoBehaviour
 {
-    private int enemies = 0;
+    private int enemies;
+
+    public int Enemies
+    { 
+        get { return enemies; }
+        set { enemies = value; }
+    }
 
     void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("PointSpawnEnemy").Length;
     }
 
+    // Update is called once per frame
     void Update()
     {
-        print(enemies);
-        if(enemies == 0)
-        {
+        if (enemies == 0)
             print("WIN!");
-        }
-
-    }
-
-    public void ChangeEnemies()
-    {
-        print("Ch " + enemies);
-        enemies--;
     }
 }

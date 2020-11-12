@@ -8,11 +8,10 @@ public class BulletScript : MonoBehaviour
     private Rigidbody rb;
     private MyGameEnding gameEnding;
 
-    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        gameEnding = player.GetComponent<MyGameEnding>();
+        gameEnding = GameObject.Find("JohnLemon").GetComponent<MyGameEnding>();
     }
 
     
@@ -27,7 +26,7 @@ public class BulletScript : MonoBehaviour
         {
             print("Enemy");
             Destroy(other.gameObject);
-            gameEnding.ChangeEnemies();
+            gameEnding.Enemies--;
         }
         Destroy(gameObject);
     }
