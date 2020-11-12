@@ -5,14 +5,14 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     private bool open;
-    private AudioSource audio;
+    private AudioSource audioSource;
     private int interpolationFramesCount = 45; // Number of frames to completely interpolate between the 2 positions
     private int elapsedFrames = 0;
 
     private void Start()
     {
-        audio = GetComponent<AudioSource>();
-        audio.Stop();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Stop();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -23,7 +23,7 @@ public class DoorScript : MonoBehaviour
             {
                 print("Open");
                 open = true;
-                audio.Play();
+                audioSource.Play();
             }
         }
     }
@@ -42,7 +42,7 @@ public class DoorScript : MonoBehaviour
 
                 elapsedFrames++;
             }
-            else { open = false; audio.Stop(); }
+            else { open = false; audioSource.Stop(); }
         }
     }
 }

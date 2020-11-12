@@ -6,16 +6,29 @@ public class BulletScript : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     private Rigidbody rb;
+    private MyGameEnding gameEnding;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        gameEnding = player.GetComponent<MyGameEnding>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         rb.AddForce(player.transform.forward * 25, ForceMode.Force);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            print("Enemy");
+            Destroy(other.gameObject);
+            gameEnding.ChangeEnemies();
+        }
+        Destroy(gameObject);
     }
 }
